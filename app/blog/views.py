@@ -3,6 +3,7 @@ from django.http import HttpResponse
 import os
 
 # Create your views here.
+from django.template.loader import render_to_string
 
 
 def post_list(request):
@@ -34,16 +35,18 @@ def post_list(request):
     :param request:
     :return:
     """
-    cur_file_path = os.path.abspath(__file__)
-    print(f'cur_file_path:{cur_file_path}')
-    blog_dir_path = os.path.dirname(cur_file_path)
-    print(f'blog_dir_path:{blog_dir_path}')
-    app_path = os.path.dirname(blog_dir_path)
+    # cur_file_path = os.path.abspath(__file__)
+    # print(f'cur_file_path:{cur_file_path}')
+    # blog_dir_path = os.path.dirname(cur_file_path)
+    # print(f'blog_dir_path:{blog_dir_path}')
+    # app_path = os.path.dirname(blog_dir_path)
+    #
+    # templates_path = os.path.join(app_path, 'templates')
+    #
+    # post_list_path = os.path.join(templates_path, 'blog', 'post_list.html')
 
-    templates_path = os.path.join(app_path, 'templates')
+    # result = open(post_list_path, 'rt').read()
 
-    post_list_path = os.path.join(templates_path, 'blog', 'post_list.html')
+    html = render_to_string('blog/post_list.html')
 
-    result = open(post_list_path, 'rt').read()
-
-    return HttpResponse(result)
+    return HttpResponse(html)
