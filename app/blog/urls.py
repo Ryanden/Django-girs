@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from .views import post_list
+from .views import post_list, post_detail
 
 # Browser -> request -> Django -> config.urls -> blog.urls -> r'^$'에 매칭 ->
 # df post_list -> return 값을 다시 Browser
@@ -11,4 +11,5 @@ urlpatterns = [
 
     # 함수를 전달함
     url(r'^$', post_list),
+    url(r'^(\d+)', post_detail)
 ]
