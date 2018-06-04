@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="ko">
 <head>
@@ -5,22 +6,31 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% comment %}
+        {% static '경로' %}는
+        settings.py 의 STATICFILES_DIRS에 포함된 경로를 기반으로 파일의 URL을 리턴해준다.
+
+        {% static %} 태그를 쓰려면 탬플릿 상단에 {% load static %}이 필요
+    {% endcomment %}
+    <!--ㅁㅁㅁ-->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <title>My First Blog</title>
 </head>
 <body>
-    <h1>DjangoGirls Blog</h1>
 
+    <div class="contatiner">
+        <h1 class="mt-4">DjangoGirls Blog</h1>
         {% for post in posts %}
-        <div>
-            <p>{{post.publish}}</p>
-            <h2>{{post.title}}</h2>
-            <p>
-                {{post.text}}
-            </p>
-        </div>
-
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">{{post.title}}</h5>
+                    <h6 class="card-subtitle text-muted mb-3 text-right">{{post.publish}}</h6>
+                    <p class="card-text">{{post.text}}</p>
+                </div>
+            </div>
         {% endfor %}
         <img src="http://menu.mt.co.kr/ize/thumb/2018/01/06/2018012200437259138_1.jpg?rnd=9636">
-    <p> 전체 포스트 목록입니다.</p>
+    </div>
+
 </body>
 </html>
