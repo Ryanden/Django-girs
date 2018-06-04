@@ -47,6 +47,8 @@ def post_list(request):
 
     # result = open(post_list_path, 'rt').read()
 
-    html = render_to_string('blog/post_list.html')
+    # html = render_to_string('blog/post_list.html')
+    #
+    # return HttpResponse(html)
 
-    return HttpResponse(html)
+    return render(request, 'blog/post_list.html')
