@@ -52,13 +52,25 @@ def post_list(request):
     #
     # return HttpResponse(html)
 
+
+
     posts = Post.objects.all()
+
+    context = {
+        'posts': posts,
+    }
 
     result = '글 목록<br>'
     for post in posts:
-
         result += f'- {post.title}<br>' \
+            # render 는 주어진 인수를 사용하여
+    #   1: HttpRequest 인스턴스
+    #   2: 문자열(파일경로)
+    #   3:
+    return render(request, 'blog/post_list.html', context)
 
-    return HttpResponse(result)
+
+    #
+    # return HttpResponse(result)
 
     # return render(request, 'blog/post_list.html')
