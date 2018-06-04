@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Post
 from django.http import HttpResponse
 import os
 
@@ -51,4 +52,13 @@ def post_list(request):
     #
     # return HttpResponse(html)
 
-    return render(request, 'blog/post_list.html')
+    posts = Post.objects.all()
+
+    result = '글 목록<br>'
+    for post in posts:
+
+        result += f'- {post.title}<br>' \
+
+    return HttpResponse(result)
+
+    # return render(request, 'blog/post_list.html')
