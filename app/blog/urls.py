@@ -11,5 +11,5 @@ urlpatterns = [
 
     # 함수를 전달함
     url(r'^$', post_list),
-    url(r'^(\d+)', post_detail)
+    url(r'^(\d+)', post_detail),
 ]

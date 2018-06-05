@@ -14,22 +14,20 @@
     {% endcomment %}
     <!--ㅁㅁㅁ-->
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-    <title>My First Blog</title>
+    <title>Post Detail</title>
 </head>
 <body>
 
     <div class="container">
-        <h1>{{post}}</h1>
         <h1 class="mt-4">DjangoGirls Blog</h1>
-        {% for post in posts %}
             <div class="card mb-4">
                 <div class="card-body">
                     <h5 class="card-title">[{{post.id}}]{{post.title}}</h5>
                     <h6 class="card-subtitle text-muted mb-3 text-right">{{post.publish}}</h6>
-                    <p class="card-text">{{post.text|truncatechars:100 }}</p>
+                    <p class="card-text">{{post.text|truncatechars:100|linebreaksbr}}</p>
                 </div>
             </div>
-        {% endfor %}
+
         <img src="http://menu.mt.co.kr/ize/thumb/2018/01/06/2018012200437259138_1.jpg?rnd=9636">
     </div>
 

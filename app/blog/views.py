@@ -72,7 +72,8 @@ def post_detail(request, post_id):
     context ={
         'post': post
     }
+    return render(request, 'blog/post_detail.html', context)
 
-    return HttpResponse(post_id, 'blog/post_list.html', context)
+
 
 
