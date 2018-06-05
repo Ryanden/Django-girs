@@ -96,10 +96,7 @@ def post_create(request):
 
 def post_delete(request, post_id):
 
-    return HttpResponse('delete page')
-    # if request.method is 'POST':
-    #     post = Post.objects.get(id=post_id)
-    #
-    #     post.delete()
-    # return redirect('post-list')
-
+    if request.method == 'POST':
+        post = Post.objects.get(id=post_id)
+        post.delete()
+        return redirect('post-list')
