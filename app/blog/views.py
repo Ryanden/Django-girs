@@ -1,11 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Post
-from django.http import HttpResponse
-import os
-
-# Create your views here.
-from django.template.loader import render_to_string
-
+from django.http import HttpResponse, HttpResponseRedirect
 
 def post_list(request):
     """
@@ -52,7 +47,7 @@ def post_list(request):
     #
     # return HttpResponse(html)
 
-    posts = Post.objects.all()
+    posts = Post.objects.all().order_by('-id')
 
     context = {
         'posts': posts,
@@ -88,9 +83,13 @@ def post_create(request):
                                        text=request.POST.get('text'),
                                        author=request.user,
                                        )
-        new_post.save()
+        # new_post.save()
 
-        return render(request, 'blog/post_detail.html')
+        # HTTP Redirection 을 보낼 URL
+        # root URL 로 리다이렉트
+
+        return redirect('post-list')
+        # return HttpResponseRedirect('/')
 
     else:
         return render(request, 'blog/post_create.html')
