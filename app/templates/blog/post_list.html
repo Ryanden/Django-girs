@@ -4,6 +4,9 @@
     {% for post in posts %}
         <div class="card mb-4">
             <div class="card-body">
+                <form action="">
+                    <p>출력확인</p>
+                </form>
                 <h5 class="card-title"><a href="{% url 'post-detail' post.id %}">{{post.title}}</a></h5>
                 <h6 class="card-subtitle text-muted mb-3 text-right">{{post.created_date}}</h6>
                 <p class="card-text">{{post.text|truncatechars:100 }}</p>

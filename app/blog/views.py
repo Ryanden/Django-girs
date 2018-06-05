@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Post
 from django.http import HttpResponse, HttpResponseRedirect
 
+
 def post_list(request):
     """
     first/
@@ -83,8 +84,6 @@ def post_create(request):
                                        text=request.POST.get('text'),
                                        author=request.user,
                                        )
-        # new_post.save()
-
         # HTTP Redirection 을 보낼 URL
         # root URL 로 리다이렉트
 
@@ -95,5 +94,12 @@ def post_create(request):
         return render(request, 'blog/post_create.html')
 
 
+def post_delete(request, post_id):
 
+    return HttpResponse('delete page')
+    # if request.method is 'POST':
+    #     post = Post.objects.get(id=post_id)
+    #
+    #     post.delete()
+    # return redirect('post-list')
 

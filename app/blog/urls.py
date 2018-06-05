@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from .views import post_list, post_detail, post_create
+from .views import post_list, post_detail, post_create, post_delete
 
 # Browser -> request -> Django -> config.urls -> blog.urls -> r'^$'에 매칭 ->
 # df post_list -> return 값을 다시 Browser
@@ -11,6 +11,7 @@ urlpatterns = [
 
     # 함수를 전달함
     url(r'^$', post_list, name='post-list'),
-    url(r'^(\d+)/', post_detail, name='post-detail'),
-    url(r'^write/', post_create, name='post-create'),
+    url(r'^(\d+)/$', post_detail, name='post-detail'),
+    url(r'^write/$', post_create, name='post-create'),
+    url(r'^(\d+)/delete/$', post_delete, name='post-delete')
 ]
