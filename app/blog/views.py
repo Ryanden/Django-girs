@@ -77,7 +77,24 @@ def post_detail(request, post_id):
 
 def post_create(request):
 
-    return render(request, 'blog/post_create.html')
+    if request.method == 'POST':
+
+        print(request.POST.get('title'))
+        print(request.POST.get('text'))
+        print(request.user.username)
+        print(type(request.user))
+
+        new_post = Post.objects.create(title=request.POST.get('title'),
+                                       text=request.POST.get('text'),
+                                       author=request.user,
+                                       )
+        new_post.save()
+
+        return render(request, 'blog/post_detail.html')
+
+    else:
+        return render(request, 'blog/post_create.html')
+
 
 
 
